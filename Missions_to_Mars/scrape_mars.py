@@ -109,3 +109,27 @@ def scrape():
     
     hemisphere_image_urls.append(Syrtis_Major_Hemisphere)
 
+    #Valles Marineris Hemisphere
+    url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced'
+    browser.visit(url)
+    response = req.get(url)
+    time.sleep(2)
+    soup = bs(response.text, 'html.parser')
+    valles_marineris_image = soup.find_all('div', class_="wide-image-wrapper")
+    
+    for image in valles_marineris_image:
+        picture = image.find('li')
+        valles_marineris_image_url = picture.find('a')['href']
+    
+    valles_marineris_title = soup.find('h2', class_='title').text
+    Valles_Marineris_Hemisphere = {"Title": valles_marineris_title, "url": valles_marineris_image_url}
+    
+    hemisphere_image_urls.append(Valles_Marineris_Hemisphere)
+    
+    mars_collection["hemisphere_image"] = hemisphere_image_urls    
+    
+    return mars_collection
+
+if __name__ == "__main__":
+    scrape()
+
