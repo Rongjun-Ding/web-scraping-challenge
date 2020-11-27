@@ -44,4 +44,34 @@ def scrape():
 
     mars_collection["featured_image_url"] = featured_image_url 
 
+    #Getting Mars Facts
+    url = 'https://space-facts.com/mars/'
+    browser.visit(url)
+    table = pd.read_html(url)       
+    df = table[0]
+    df.columns = ["Facts", "Value"]
+    facts_html = df.to_html()
+    facts_html = facts_html.replace("\n","")
+    mars_collection["fact_table"] = facts_html
+
+    #Mars Hemispheres
+    #empty list
+    hemisphere_image_urls =[]
+
+    #Cerberus Hemisphere
+    url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced'
+    browser.visit(url)
+    response = req.get(url)
+    time.sleep(2)
+    soup = bs(response.text, 'html.parser')
+    Cerberus_image = soup.find_all('div', class_="wide-image-wrapper")
     
+    for image in Cerberus_image:
+        picture = image.find('li')
+        Cerberus_image_url = picture.find('a')['href']
+    
+    cerberus_title = soup.find('h2', class_='title').text   
+    Cerberus_Hemisphere = {"Title": cerberus_title, "url": Cerberus_image_url}
+    
+    hemisphere_image_urls.append(Cerberus_Hemisphere)
+
