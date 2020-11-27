@@ -75,3 +75,37 @@ def scrape():
     
     hemisphere_image_urls.append(Cerberus_Hemisphere)
 
+    #Schiaparelli Hemisphere
+    url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced'
+    browser.visit(url)
+    response = req.get(url)
+    time.sleep(2)
+    soup = bs(response.text, 'html.parser')
+    shiaparelli_image = soup.find_all('div', class_="wide-image-wrapper")
+    
+    for image in shiaparelli_image:
+        picture = image.find('li')
+        shiaparelli_image_url = picture.find('a')['href']
+    
+    shiaparelli_title = soup.find('h2', class_='title').text
+    Schiaparelli_Hemisphere = {"Title": shiaparelli_title, "url": shiaparelli_image_url}
+    
+    hemisphere_image_urls.append(Schiaparelli_Hemisphere)
+
+    #Syrtis Major Hemisphere
+    url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced'
+    browser.visit(url)
+    response = req.get(url)
+    time.sleep(2)
+    soup = bs(response.text, 'html.parser')
+    syrtris_image = soup.find_all('div', class_="wide-image-wrapper")
+
+    for image in syrtris_image:
+        picture = image.find('li')
+        syrtris_image_url = picture.find('a')['href']
+    
+    syrtris_title = soup.find('h2', class_='title').text
+    Syrtis_Major_Hemisphere = {"Title": syrtris_title, "url": syrtris_image_url}
+    
+    hemisphere_image_urls.append(Syrtis_Major_Hemisphere)
+
