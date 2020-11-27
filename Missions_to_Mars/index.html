@@ -41,5 +41,33 @@
                 {{mars.fact_table | safe}}
             </div>
         </div>
-
-    </body>
+        <!-- Mars Hemisphere -->       
+        <div class="row" id="mars-hemispheres" style="margin-top:80px;">
+            <br>
+            <h1 class="heading text-center"><strong>Mars Hemisphere</strong></h2>
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    {% for pic in mars.hemisphere_image[0:2] %}           
+                        <img class = "img img-thumbnail" src="{{pic['url']}}" alt="hemisphere" style="width:50%;">
+                        <div class="caption"style="font-weight: bold;">
+                            {{pic['Title']}}
+                        </div>                                           
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    {% for pic in mars.hemisphere_image[2:4] %}
+                                    
+                        <img src="{{pic['url']}}" alt="hemisphere" style="width:50%;">
+                        <div class="caption "style="font-weight: bold;">
+                            {{pic['Title']}}
+                        </div>                                           
+                    {% endfor %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
