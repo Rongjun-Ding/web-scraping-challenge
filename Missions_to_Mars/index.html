@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <!--scrape button-->
+        <!--scrape-->
         <div class="container">
             <div class="jumbotron text-center">
                 <h1>Mission to Mars</h1>
@@ -23,6 +23,22 @@
                 <h1 class="heading"><strong>Latest Mars News</strong>
                 <h3 class="heading">{{ mars.news_title }}</h4>
                 <p>{{ mars.news_photo }}</p>
+            </div>
+        </div>
+        <!-- images -->
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="heading"><strong>Featured Mars Image</strong></h1>
+                <img src="{{ mars.featured_image_url }}" class="img-responsive"
+                    alt="Mars Images">
+                    <br>
+            </div> 
+        </div>
+        <!-- Mars Facts -->
+        <div class="row" id="mars-facts">
+            <div class="col-md-12">
+                <h4>Mars Facts</h4>
+                {{mars.fact_table | safe}}
             </div>
         </div>
 
