@@ -34,7 +34,7 @@ def scrape():
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(url)
     response = req.get(url)
-    time.sleep(2)
+    time.sleep(1)
     soup = bs(response.text, 'html.parser')    
     image_url = soup.find('article', class_='carousel_item')
     footer = image_url.find('footer')
@@ -62,7 +62,7 @@ def scrape():
     url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced'
     browser.visit(url)
     response = req.get(url)
-    time.sleep(2)
+    time.sleep(1)
     soup = bs(response.text, 'html.parser')
     Cerberus_image = soup.find_all('div', class_="wide-image-wrapper")
     
@@ -79,7 +79,7 @@ def scrape():
     url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced'
     browser.visit(url)
     response = req.get(url)
-    time.sleep(2)
+    time.sleep(1)
     soup = bs(response.text, 'html.parser')
     shiaparelli_image = soup.find_all('div', class_="wide-image-wrapper")
     
@@ -96,7 +96,7 @@ def scrape():
     url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced'
     browser.visit(url)
     response = req.get(url)
-    time.sleep(2)
+    time.sleep(1)
     soup = bs(response.text, 'html.parser')
     syrtris_image = soup.find_all('div', class_="wide-image-wrapper")
 
@@ -113,7 +113,7 @@ def scrape():
     url = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced'
     browser.visit(url)
     response = req.get(url)
-    time.sleep(2)
+    time.sleep(1)
     soup = bs(response.text, 'html.parser')
     valles_marineris_image = soup.find_all('div', class_="wide-image-wrapper")
     
